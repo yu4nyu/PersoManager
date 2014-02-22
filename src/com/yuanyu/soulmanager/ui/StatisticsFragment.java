@@ -33,8 +33,8 @@ public class StatisticsFragment extends Fragment {
 		
 		mContentText = (TextView) v.findViewById(R.id.statistics_fragment_content);
 		
-		String content = getSleepStatistics();
-		content += getTasksStatistics();
+		//String content = getSleepStatistics();
+		String content = getTasksStatistics();
 		mContentText.setText(content);
 		
 		return v;
@@ -138,7 +138,7 @@ public class StatisticsFragment extends Fragment {
 		for(Map.Entry<String, Integer> entry : projects.entrySet()) {
 			result += entry.getKey() + " " + entry.getValue() + "次\n";
 		}
-		result += "本月完成的任务: \n";
+		result += "\n本月完成的任务: \n";
 		if(tasks.size() == 0) {
 			result += "None\n";
 		}
