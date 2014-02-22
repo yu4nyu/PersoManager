@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/menu_container"
+    android:layout_width="@dimen/side_menu_width"
+    android:layout_height="match_parent"
+    android:layout_gravity="start"
+    android:background="#ff606060" >
+
+    <LinearLayout
+        android:id="@+id/items_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/item_statuses"
+            style="@style/SideMenuTextView"
+            android:layout_marginTop="10dp"
+            android:text="@string/side_menu_statuses" />
+
+        <View style="@style/SideMenuSeparator" />
+
+        <TextView
+            android:id="@+id/item_projects"
+            style="@style/SideMenuTextView"
+            android:text="@string/side_menu_projects" />
+
+        <View style="@style/SideMenuSeparator" />
+
+        <TextView
+            android:id="@+id/item_tasks"
+            style="@style/SideMenuTextView"
+            android:text="@string/side_menu_tasks" />
+
+        <View style="@style/SideMenuSeparator" />
+
+        <TextView
+            android:id="@+id/item_events"
+            style="@style/SideMenuTextView"
+            android:text="@string/side_menu_events" />
+
+        <View style="@style/SideMenuSeparator" />
+
+        <TextView
+            android:id="@+id/item_backup"
+            style="@style/SideMenuTextView"
+            android:text="@string/side_menu_backup" />
+
+        <!--
+            TextView
+            android:id="@+id/item_experience"
+            style="@style/SideMenuTextView"
+            android:text="@string/side_menu_experience"
+        -->
+
+
+        <!--
+             TextView
+            android:id="@+id/item_finance"
+            style="@style/SideMenuTextView"
+            android:text="@string/side_menu_finance"
+        -->
+
+
+        <!--
+            TextView
+            android:id="@+id/item_dreams"
+            style="@style/SideMenuTextView"
+            android:text="@string/side_menu_dreams"
+        -->
+
+        <TextView
+            android:id="@+id/item_statistics"
+            style="@style/SideMenuTextView"
+            android:text="@string/side_menu_statistics" />
+
+        <!--
+            TextView
+            android:id="@+id/item_settings"
+            style="@style/SideMenuTextView"
+            android:text="@string/side_menu_settings"
+        -->
+    </LinearLayout>
+
+</ScrollView>

@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+    
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:gravity="center_horizontal"
+        android:background="@android:color/holo_blue_light"
+        android:text="@string/define_description" />
+
+    <EditText
+        android:id="@+id/projet_add_dialog_name_edit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/name" />
+
+    <EditText
+        android:id="@+id/projet_add_dialog_desciption_edit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/description" />
+    
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:gravity="center_horizontal"
+        android:background="@android:color/holo_blue_light"
+        android:text="@string/define_contributions" />
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:stretchColumns="0,1,2" >
+
+        <TableRow>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:orientation="vertical" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/attribute_force" />
+
+                <NumberPicker
+                    android:id="@+id/project_add_dialog_force_value"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/project_value_picker_height" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:orientation="vertical" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/attribute_intelligence" />
+
+                <NumberPicker
+                    android:id="@+id/project_add_dialog_intelligence_value"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/project_value_picker_height" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:orientation="vertical" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/attribute_volition" />
+
+                <NumberPicker
+                    android:id="@+id/project_add_dialog_volition_value"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/project_value_picker_height" />
+            </LinearLayout>
+        </TableRow>
+
+        <TableRow>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:orientation="vertical" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/attribute_money" />
+
+                <NumberPicker
+                    android:id="@+id/project_add_dialog_money_value"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/project_value_picker_height" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:orientation="vertical" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/attribute_experience" />
+
+                <NumberPicker
+                    android:id="@+id/project_add_dialog_experience_value"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/project_value_picker_height" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:orientation="vertical" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/attribute_happy" />
+
+                <NumberPicker
+                    android:id="@+id/project_add_dialog_happy_value"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/project_value_picker_height" />
+            </LinearLayout>
+        </TableRow>
+    </TableLayout>
+
+</LinearLayout>

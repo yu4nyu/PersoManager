@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Soul Manager</string>
+    <string name="action_settings">Settings</string>
+    <string name="hello_world">Hello world!</string>
+    
+    <!-- Global strings -->
+    <string name="name">Name</string>
+    <string name="description">Description</string>
+    <string name="ok">OK</string>
+    <string name="cancel">Cancel</string>
+    <string name="confirm">Confirm</string>
+    
+    <!-- Error message -->
+    <string name="error_not_empty">Must not be empty</string>
+    
+    <!-- Menu items -->
+    <string name="side_menu_statuses">Statuses</string>
+    <string name="side_menu_projects">Projects</string>
+    <string name="side_menu_tasks">Tasks</string>
+    <string name="side_menu_events">Events</string>
+    <string name="side_menu_backup">Backup</string>
+    <string name="side_menu_experience">Experience</string>
+    <string name="side_menu_finance">Finance</string>
+    <string name="side_menu_dreams">Dreams</string>
+    <string name="side_menu_statistics">Statistics</string>
+    <string name="side_menu_settings">Settings</string>
+    <string name="menu_add">Add</string>
+    
+    <!-- Attributes -->
+    <string name="attribute_force">Force</string>
+    <string name="attribute_intelligence">Intelligence</string>
+    <string name="attribute_volition">Volition</string>
+    <string name="attribute_money">Money</string>
+    <string name="attribute_experience">Experience</string>
+    <string name="attribute_happy">Happy</string>
+    
+    <!-- Status fragment -->
+    <string name="last_finished_tasks">Last finished tasks</string>
+    <string name="no_last_task_text">No last finished task</string>
+    
+    <!-- Project Fragment -->
+    <string name="no_project_text">No project\nClick "add" icon to add one</string>
+    <string name="add_a_project">Add a project</string>
+    <string name="define_description">NAME AND DESCRIPTION</string>
+    <string name="define_contributions">CONTRIBUTION FOR ATTRIBUTES</string>
+    <string name="project_finish_confirm_dialog_text">You finished this project: %s?</string>
+    <string name="project_delete_confirm_dialog_text">Delete this project: %s?</string>
+    
+    <!-- Task Fragment -->
+    <string name="no_task_text">No task\nClick "add" icon to add one</string>
+    <string name="task_finish_confirm_dialog_text">You finished this task: %s?</string>
+    <string name="task_delete_confirm_dialog_text">Delete this task: %s?</string>
+    <string name="task_finished_times">Finished %d times</string>
+    
+    <!-- Event Fragment -->
+    <string name="no_event_text">No event\nClick "add" icon to add one</string>
+    <string name="event_record_confirm_dialog_text">Record this event: %s?</string>
+    <string name="event_delete_confirm_dialog_text">Delete this event: %s?</string>
+    <string name="add_an_event">Add an event</string>
+    <string name="event_recorded_times">Recorded %d times</string>
+    <string name="event_last_time">Last time:</string>
+    
+    <!-- Backup Fragment -->
+    <string name="link_to_dropbox">Link to Dropbox</string>
+    <string name="backup_to_dropbox">Backup to DropBox</string>
+    <string name="recovery_from_dropbox">Recovery from DropBox</string>
+    <string name="backup_succeeded">Backup succeeded</string>
+    <string name="backup_failed">Backup failed</string>
+    <string name="recovery_succeeded">Recovery succeeded</string>
+    <string name="recovery_failed">Recovery failed</string>
+    <string name="confirm_backup_to_dropbox">Backup all data to Dropbox? The old backup will be dropped.</string>
+    <string name="confirm_recovery_from_dropbox">Recovery all data from Dropbox? The current data will be dropped.</string>
+    <string name="restart_dialog_title">Restart</string>
+    <string name="not_now">Not now</string>
+    <string name="restart_dialog_message">Recovery succeeded! You must restart the application to update all the data.</string>
+
+</resources>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- This layout is a shell for the right top-part of the sidemenu scheme -->
+
+<!-- Tiny padding to avoid to have the ViewPager's PagerTabStrip stuck to the border -->
+
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/panel_main_view"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+</FrameLayout>

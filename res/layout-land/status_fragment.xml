@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginLeft="@dimen/principal_size_margin"
+    android:layout_marginRight="@dimen/principal_size_margin" >
+
+    <TextView
+        android:id="@+id/status_fragment_level_text"
+        android:layout_width="@dimen/status_level_text_view_size"
+        android:layout_height="@dimen/status_level_text_view_size"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:gravity="center"
+        android:textSize="@dimen/status_level_text_size" />
+
+    <ProgressBar
+        android:id="@+id/status_fragment_progress"
+        style="@android:style/Widget.ProgressBar.Horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignRight="@id/status_fragment_level_text"
+        android:layout_below="@id/status_fragment_level_text"
+        android:max="100" />
+
+    <TextView
+        android:id="@+id/status_fragment_progress_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/status_fragment_progress"
+        android:layout_alignLeft="@id/status_fragment_progress"
+        android:layout_alignRight="@id/status_fragment_progress"
+        android:layout_alignTop="@id/status_fragment_progress"
+        android:layout_marginBottom="2dp"
+        android:layout_marginTop="-2dp"
+        android:gravity="center"
+        android:textColor="@android:color/white" />
+
+    <TableLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/status_fragment_progress"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="28dp"
+        android:layout_toRightOf="@id/status_fragment_level_text"
+        android:stretchColumns="0,1,2" >
+
+        <TableRow
+            android:layout_weight="1"
+            android:gravity="center_vertical" >
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" >
+
+                <ImageView
+                    android:layout_width="@dimen/status_item_icon_size"
+                    android:layout_height="@dimen/status_item_icon_size"
+                    android:contentDescription="@string/attribute_force"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/ic_contrib_force_black" />
+
+                <TextView
+                    android:id="@+id/status_fragment_force_text"
+                    style="@style/StatusFragmentAttributeText" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" >
+
+                <ImageView
+                    android:layout_width="@dimen/status_item_icon_size"
+                    android:layout_height="@dimen/status_item_icon_size"
+                    android:contentDescription="@string/attribute_intelligence"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/ic_contrib_intelligence_black" />
+
+                <TextView
+                    android:id="@+id/status_fragment_intelligence_text"
+                    style="@style/StatusFragmentAttributeText" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" >
+
+                <ImageView
+                    android:layout_width="@dimen/status_item_icon_size"
+                    android:layout_height="@dimen/status_item_icon_size"
+                    android:contentDescription="@string/attribute_volition"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/ic_contrib_volition_black" />
+
+                <TextView
+                    android:id="@+id/status_fragment_volition_text"
+                    style="@style/StatusFragmentAttributeText" />
+            </LinearLayout>
+        </TableRow>
+
+        <TableRow
+            android:layout_weight="1"
+            android:gravity="center_vertical" >
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" >
+
+                <ImageView
+                    android:layout_width="@dimen/status_item_icon_size"
+                    android:layout_height="@dimen/status_item_icon_size"
+                    android:contentDescription="@string/attribute_money"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/ic_contrib_money_black" />
+
+                <TextView
+                    android:id="@+id/status_fragment_money_text"
+                    style="@style/StatusFragmentAttributeText" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" >
+
+                <ImageView
+                    android:layout_width="@dimen/status_item_icon_size"
+                    android:layout_height="@dimen/status_item_icon_size"
+                    android:contentDescription="@string/attribute_experience"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/ic_contrib_experience_black" />
+
+                <TextView
+                    android:id="@+id/status_fragment_experience_text"
+                    style="@style/StatusFragmentAttributeText" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" >
+
+                <ImageView
+                    android:layout_width="@dimen/status_item_icon_size"
+                    android:layout_height="@dimen/status_item_icon_size"
+                    android:contentDescription="@string/attribute_happy"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/ic_contrib_happy_black" />
+
+                <TextView
+                    android:id="@+id/status_fragment_happy_text"
+                    style="@style/StatusFragmentAttributeText" />
+            </LinearLayout>
+        </TableRow>
+    </TableLayout>
+
+    <FrameLayout
+        android:id="@+id/status_fragment_last_tasks_framelayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/status_fragment_progress"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/item_shadow" >
+
+        <TextView
+            android:id="@+id/status_fragment_last_tasks_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/holo_blue_light"
+            android:gravity="center"
+            android:text="@string/last_finished_tasks"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/status_attribute_text_size" />
+    </FrameLayout>
+
+    <ListView
+        android:id="@+id/status_fragment_last_tasks_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_below="@id/status_fragment_last_tasks_framelayout" />
+
+    <TextView
+        android:id="@+id/status_fragment_last_tasks_empty_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_below="@id/status_fragment_last_tasks_framelayout"
+        android:gravity="center"
+        android:text="@string/no_last_task_text"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+</RelativeLayout>

@@ -1,0 +1,7 @@
+<resources>
+    
+    <!-- Status Fragment -->
+    <dimen name="status_level_text_size">72sp</dimen>
+    <dimen name="status_level_text_view_size">90dp</dimen>
+
+</resources>

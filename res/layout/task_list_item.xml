@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/item_shadow" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/item_task"
+        android:orientation="vertical"
+        android:paddingLeft="@dimen/list_item_side_padding"
+        android:paddingRight="@dimen/list_item_side_padding" >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+
+            <TextView
+                android:id="@+id/project_list_item_name_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:textColor="@android:color/white" />
+
+            <TextView
+                android:id="@+id/task_list_item_times_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:textColor="@android:color/white" />
+        </RelativeLayout>
+
+        <LinearLayout
+            android:id="@+id/project_list_item_grid_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:baselineAligned="false" >
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" >
+
+                <ImageView
+                    android:layout_width="@dimen/project_item_icon_size"
+                    android:layout_height="@dimen/project_item_icon_size"
+                    android:layout_gravity="center_vertical"
+                    android:contentDescription="@string/attribute_force"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/ic_contrib_force" />
+
+                <TextView
+                    android:id="@+id/project_list_item_force_text"
+                    style="@style/ProjectListItemAttributeText" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" >
+
+                <ImageView
+                    android:layout_width="@dimen/project_item_icon_size"
+                    android:layout_height="@dimen/project_item_icon_size"
+                    android:layout_gravity="center_vertical"
+                    android:contentDescription="@string/attribute_intelligence"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/ic_contrib_intelligence" />
+
+                <TextView
+                    android:id="@+id/project_list_item_intelligence_text"
+                    style="@style/ProjectListItemAttributeText" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" >
+
+                <ImageView
+                    android:layout_width="@dimen/project_item_icon_size"
+                    android:layout_height="@dimen/project_item_icon_size"
+                    android:layout_gravity="center_vertical"
+                    android:contentDescription="@string/attribute_volition"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/ic_contrib_volition" />
+
+                <TextView
+                    android:id="@+id/project_list_item_volition_text"
+                    style="@style/ProjectListItemAttributeText" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" >
+
+                <ImageView
+                    android:layout_width="@dimen/project_item_icon_size"
+                    android:layout_height="@dimen/project_item_icon_size"
+                    android:layout_gravity="center_vertical"
+                    android:contentDescription="@string/attribute_money"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/ic_contrib_money" />
+
+                <TextView
+                    android:id="@+id/project_list_item_money_text"
+                    style="@style/ProjectListItemAttributeText" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" >
+
+                <ImageView
+                    android:layout_width="@dimen/project_item_icon_size"
+                    android:layout_height="@dimen/project_item_icon_size"
+                    android:layout_gravity="center_vertical"
+                    android:contentDescription="@string/attribute_experience"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/ic_contrib_experience" />
+
+                <TextView
+                    android:id="@+id/project_list_item_experience_text"
+                    style="@style/ProjectListItemAttributeText" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" >
+
+                <ImageView
+                    android:layout_width="@dimen/project_item_icon_size"
+                    android:layout_height="@dimen/project_item_icon_size"
+                    android:layout_gravity="center_vertical"
+                    android:contentDescription="@string/attribute_happy"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/ic_contrib_happy" />
+
+                <TextView
+                    android:id="@+id/project_list_item_happy_text"
+                    style="@style/ProjectListItemAttributeText" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+</FrameLayout>
