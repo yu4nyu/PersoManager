@@ -2,6 +2,7 @@ package com.yuanyu.soulmanager.ui;
 
 import java.util.Calendar;
 import java.util.Map;
+import java.util.TimeZone;
 
 import com.google.common.collect.Maps;
 import com.yuanyu.soulmanager.R;
@@ -34,7 +35,8 @@ public class StatisticsFragment extends Fragment {
 		mContentText = (TextView) v.findViewById(R.id.statistics_fragment_content);
 		
 		//String content = getSleepStatistics();
-		String content = getTasksStatistics();
+		String content = getCurrentMonthTasksStatistics() + "\n\n";
+		content += getLastMonthTasksStatistics();
 		mContentText.setText(content);
 		
 		return v;
@@ -61,21 +63,21 @@ public class StatisticsFragment extends Fragment {
         		sleep = cursor.getLong(cursor.getColumnIndex(RecordedEventsTable.Columns.TIME));
         		calendar.setTimeInMillis(sleep);
         		if(calendar.get(Calendar.HOUR_OF_DAY) > 6 && calendar.get(Calendar.HOUR_OF_DAY) < 21) {
-        			continue; // ºöÂÔ°×ÌìµÄË¯¾õ
+        			continue; // ï¿½ï¿½ï¿½Ô°ï¿½ï¿½ï¿½ï¿½Ë¯ï¿½ï¿½
         		}
         		
-        		result += "Ë¯¾õ£º" + calendar.get(Calendar.HOUR_OF_DAY) + "µã" +
-        				calendar.get(Calendar.MINUTE) + "·Ö\n";
+        		result += "Ë¯ï¿½ï¿½ï¿½ï¿½" + calendar.get(Calendar.HOUR_OF_DAY) + "ï¿½ï¿½" +
+        				calendar.get(Calendar.MINUTE) + "ï¿½ï¿½\n";
         	}
         	else if(id == 3) {
         		getup = cursor.getLong(cursor.getColumnIndex(RecordedEventsTable.Columns.TIME));
         		calendar.setTimeInMillis(getup);
         		if(calendar.get(Calendar.HOUR_OF_DAY) < 5 || calendar.get(Calendar.HOUR_OF_DAY) > 16) {
-        			continue; // ºöÂÔ°×ÌìµÄË¯¾õ
+        			continue; // ï¿½ï¿½ï¿½Ô°ï¿½ï¿½ï¿½ï¿½Ë¯ï¿½ï¿½
         		}
         		
-        		result += "Æð´²£º" + calendar.get(Calendar.HOUR_OF_DAY) + "µã" +
-        				calendar.get(Calendar.MINUTE) + "·Ö\n";
+        		result += "ï¿½ð´²£ï¿½" + calendar.get(Calendar.HOUR_OF_DAY) + "ï¿½ï¿½" +
+        				calendar.get(Calendar.MINUTE) + "ï¿½ï¿½\n";
         	}
         	average += (getup - sleep);
         	cursor.moveToNext();
@@ -83,11 +85,11 @@ public class StatisticsFragment extends Fragment {
         average /= (cursor.getCount()/2);
         cursor.close();
         
-        result += "Æ½¾ùË¯ÃßÊ±¼ä£º" + average/1000/60/60 + "Ð¡Ê±" + average/1000/60%60 + "·ÖÖÓ\n";
+        result += "Æ½ï¿½ï¿½Ë¯ï¿½ï¿½Ê±ï¿½ä£º" + average/1000/60/60 + "Ð¡Ê±" + average/1000/60%60 + "ï¿½ï¿½ï¿½ï¿½\n";
         return result;
 	}
 	
-	private String getTasksStatistics() {
+	private String getCurrentMonthTasksStatistics() {
 		long start = FormattedTimeUtils.getFirstMomentOfMonth();
 		long end = FormattedTimeUtils.getLastMomentOfMonth();
 		
@@ -131,19 +133,88 @@ public class StatisticsFragment extends Fragment {
 			cursor.moveToNext();
 		}
 		
-		String result = "\n±¾ÔÂÍê³ÉµÄÏîÄ¿£º\n";
+		String result = "\nï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Éµï¿½ï¿½ï¿½Ä¿ï¿½ï¿½\n";
 		if(projects.size() == 0) {
 			result += "None\n";
 		}
 		for(Map.Entry<String, Integer> entry : projects.entrySet()) {
-			result += entry.getKey() + " " + entry.getValue() + "´Î\n";
+			result += entry.getKey() + " " + entry.getValue() + "ï¿½ï¿½\n";
 		}
-		result += "\n±¾ÔÂÍê³ÉµÄÈÎÎñ: \n";
+		result += "\nï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Éµï¿½ï¿½ï¿½ï¿½ï¿½: \n";
 		if(tasks.size() == 0) {
 			result += "None\n";
 		}
 		for(Map.Entry<String, Integer> entry : tasks.entrySet()) {
-			result += entry.getKey() + " " + entry.getValue() + "´Î\n";
+			result += entry.getKey() + " " + entry.getValue() + "ï¿½ï¿½\n";
+		}
+		
+		return result;
+	}
+	
+	private String getLastMonthTasksStatistics() {
+		Calendar calendar = Calendar.getInstance(TimeZone.getDefault());
+		int year = calendar.get(Calendar.YEAR);
+		int month = calendar.get(Calendar.MONTH);
+		if(month == Calendar.JANUARY) {
+			year--;
+			month = Calendar.DECEMBER;
+		}
+		long start = FormattedTimeUtils.getFirstMomentOfMonth(year, month);
+		long end = FormattedTimeUtils.getLastMomentOfMonth(year, month);
+		
+		String[] columns = new String[] { FinishedTasksTable.Columns.TYPE,
+				FinishedTasksTable.Columns.NAME, FinishedTasksTable.Columns.TIME };
+		String where = FinishedTasksTable.Columns.TIME + " > " + start + " AND " +
+				FinishedTasksTable.Columns.TIME + " < " + end;
+		String orderBy = FinishedTasksTable.Columns.NAME;
+		Cursor cursor = CacheDb.instance(getActivity()).getDbBlocking()
+				.query(FinishedTasksTable.TABLE_NAME, columns, where, null, null, null, orderBy, null);
+		
+		Map<String, Integer> projects = Maps.newHashMap();
+		Map<String, Integer> tasks = Maps.newHashMap();
+		cursor.moveToFirst();
+		int type;
+		Integer count;
+		String name;
+		for(int i = 0; i < cursor.getCount(); i++) {
+			type = cursor.getInt(cursor.getColumnIndex(FinishedTasksTable.Columns.TYPE));
+			name = cursor.getString(cursor.getColumnIndex(FinishedTasksTable.Columns.NAME));
+			switch(type) {
+			case FinishedTasksTable.TYPE_PROJECT:
+				count = projects.get(name);
+				if(count == null) {
+					projects.put(name, 1);
+				}
+				else {
+					projects.put(name, count + 1);
+				}
+				break;
+			case FinishedTasksTable.TYPE_TASK:
+				count = tasks.get(name);
+				if(count == null) {
+					tasks.put(name, 1);
+				}
+				else {
+					tasks.put(name, count + 1);
+				}
+				break;
+			}
+			cursor.moveToNext();
+		}
+		
+		String result = "\nFinished projects last month:\n";
+		if(projects.size() == 0) {
+			result += "None\n";
+		}
+		for(Map.Entry<String, Integer> entry : projects.entrySet()) {
+			result += entry.getKey() + " " + entry.getValue() + "times\n";
+		}
+		result += "\nFinished tasks last month: \n";
+		if(tasks.size() == 0) {
+			result += "None\n";
+		}
+		for(Map.Entry<String, Integer> entry : tasks.entrySet()) {
+			result += entry.getKey() + " " + entry.getValue() + "times\n";
 		}
 		
 		return result;
