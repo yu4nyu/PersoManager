@@ -8,7 +8,6 @@ import com.google.common.collect.Maps;
 import com.yuanyu.soulmanager.R;
 import com.yuanyu.soulmanager.data.CacheDb;
 import com.yuanyu.soulmanager.data.FinishedTasksTable;
-import com.yuanyu.soulmanager.data.RecordedEventsTable;
 import com.yuanyu.soulmanager.ui.utils.FormattedTimeUtils;
 
 import android.database.Cursor;
@@ -34,59 +33,11 @@ public class StatisticsFragment extends Fragment {
 		
 		mContentText = (TextView) v.findViewById(R.id.statistics_fragment_content);
 		
-		//String content = getSleepStatistics();
-		String content = getCurrentMonthTasksStatistics() + "\n\n";
+		String content = getCurrentMonthTasksStatistics() + "\n";
 		content += getLastMonthTasksStatistics();
 		mContentText.setText(content);
 		
 		return v;
-	}
-	
-	private String getSleepStatistics() {
-		String[] columns = new String[] { RecordedEventsTable.Columns.ID,
-				RecordedEventsTable.Columns.NAME, RecordedEventsTable.Columns.TIME };
-		String where = RecordedEventsTable.Columns.ID + " = 2 OR " +
-				RecordedEventsTable.Columns.ID + " = 3";
-		String orderBy = RecordedEventsTable.Columns.TIME;
-		Cursor cursor = CacheDb.instance(getActivity()).getDbBlocking()
-				.query(RecordedEventsTable.TABLE_NAME, columns, where, null, null, null, orderBy, null);
-
-		cursor.moveToFirst();
-		String result = "";
-		long average = 0;
-		int id;
-		long getup = 0, sleep = 0;
-		Calendar calendar = Calendar.getInstance();
-        for(int i = 0; i < cursor.getCount(); i++){
-        	id = cursor.getInt(cursor.getColumnIndex(RecordedEventsTable.Columns.ID));
-        	if(id == 2) {
-        		sleep = cursor.getLong(cursor.getColumnIndex(RecordedEventsTable.Columns.TIME));
-        		calendar.setTimeInMillis(sleep);
-        		if(calendar.get(Calendar.HOUR_OF_DAY) > 6 && calendar.get(Calendar.HOUR_OF_DAY) < 21) {
-        			continue; // ���԰����˯��
-        		}
-        		
-        		result += "˯����" + calendar.get(Calendar.HOUR_OF_DAY) + "��" +
-        				calendar.get(Calendar.MINUTE) + "��\n";
-        	}
-        	else if(id == 3) {
-        		getup = cursor.getLong(cursor.getColumnIndex(RecordedEventsTable.Columns.TIME));
-        		calendar.setTimeInMillis(getup);
-        		if(calendar.get(Calendar.HOUR_OF_DAY) < 5 || calendar.get(Calendar.HOUR_OF_DAY) > 16) {
-        			continue; // ���԰����˯��
-        		}
-        		
-        		result += "�𴲣�" + calendar.get(Calendar.HOUR_OF_DAY) + "��" +
-        				calendar.get(Calendar.MINUTE) + "��\n";
-        	}
-        	average += (getup - sleep);
-        	cursor.moveToNext();
-        }
-        average /= (cursor.getCount()/2);
-        cursor.close();
-        
-        result += "ƽ��˯��ʱ�䣺" + average/1000/60/60 + "Сʱ" + average/1000/60%60 + "����\n";
-        return result;
 	}
 	
 	private String getCurrentMonthTasksStatistics() {
@@ -133,19 +84,19 @@ public class StatisticsFragment extends Fragment {
 			cursor.moveToNext();
 		}
 		
-		String result = "\n������ɵ���Ŀ��\n";
+		String result = "\nFinished projects this month:\n";
 		if(projects.size() == 0) {
 			result += "None\n";
 		}
 		for(Map.Entry<String, Integer> entry : projects.entrySet()) {
-			result += entry.getKey() + " " + entry.getValue() + "��\n";
+			result += entry.getKey() + " " + entry.getValue() + " times\n";
 		}
-		result += "\n������ɵ�����: \n";
+		result += "\nFinished tasks this month: \n";
 		if(tasks.size() == 0) {
 			result += "None\n";
 		}
 		for(Map.Entry<String, Integer> entry : tasks.entrySet()) {
-			result += entry.getKey() + " " + entry.getValue() + "��\n";
+			result += entry.getKey() + " " + entry.getValue() + " times\n";
 		}
 		
 		return result;
@@ -158,6 +109,9 @@ public class StatisticsFragment extends Fragment {
 		if(month == Calendar.JANUARY) {
 			year--;
 			month = Calendar.DECEMBER;
+		}
+		else {
+			month--;
 		}
 		long start = FormattedTimeUtils.getFirstMomentOfMonth(year, month);
 		long end = FormattedTimeUtils.getLastMomentOfMonth(year, month);
@@ -207,14 +161,14 @@ public class StatisticsFragment extends Fragment {
 			result += "None\n";
 		}
 		for(Map.Entry<String, Integer> entry : projects.entrySet()) {
-			result += entry.getKey() + " " + entry.getValue() + "times\n";
+			result += entry.getKey() + " " + entry.getValue() + " times\n";
 		}
 		result += "\nFinished tasks last month: \n";
 		if(tasks.size() == 0) {
 			result += "None\n";
 		}
 		for(Map.Entry<String, Integer> entry : tasks.entrySet()) {
-			result += entry.getKey() + " " + entry.getValue() + "times\n";
+			result += entry.getKey() + " " + entry.getValue() + " times\n";
 		}
 		
 		return result;
